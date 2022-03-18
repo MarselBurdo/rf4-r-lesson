@@ -1,0 +1,12 @@
+.counter_block {
+  border: 1px dashed blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 20px 40px 20px;
+}
+
+.counter_block-text {
+  font-size: 28px;
+  color: tomato;
+}
