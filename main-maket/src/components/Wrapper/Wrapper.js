@@ -1,17 +1,11 @@
 import React from "react";
 import Content from "../Content/Content";
 import Sidebar from "../Sidebar/Sidebar";
+import st from "./Wrapper.module.css";
 
 export default function Wrapper() {
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "300px 1fr",
-        width: "100%",
-        height: "100vh",
-      }}
-    >
+    <div className={`${st.main} ${st.text}`}>
       <Sidebar />
       <Content />
     </div>
