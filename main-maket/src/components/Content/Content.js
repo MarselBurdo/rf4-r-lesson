@@ -1,10 +1,13 @@
 import React from "react";
-import Paper from "../Paper/Paper";
 import "./style.scss";
-import { Button as MuButton } from "@mui/material";
-import { Button as AntButton } from "antd";
-import Button, { EmoButton } from "../Button";
-import Counter from "../Counter/Counter";
+// import Paper from "../Paper/Paper";
+// import { Button as MuButton } from "@mui/material";
+// import { Button as AntButton } from "antd";
+// import Button, { EmoButton } from "../Button";
+// import Counter from "../Counter/Counter";
+// import Order from "../Order/Order";
+// import LifecycleClass from "../Lifecycle/LifecycleClass";
+import FetchAPI from "../Fetch/FetchAPI";
 // import Button from "../Button/Button";
 // import { EmoButton } from "../Button/Button.style";
 
@@ -18,9 +21,11 @@ export default function Content() {
 
   return (
     <div className="content_main">
-      <Counter />
+      <FetchAPI />
+      {/* <LifecycleClass /> */}
+      {/* <Counter /> */}
 
-      <Button
+      {/* <Button
         label="Добавить преподавателя"
         size={15}
         bgColor={"#94d2bd"}
@@ -31,8 +36,10 @@ export default function Content() {
         size={10}
         bgColor={"#b5179e"}
         onClickFunction={onButtonClick}
-      />
-      <Button
+      /> */}
+
+      {/* <Order /> */}
+      {/* <Button
         label="Добавить факультет"
         bgColor={"#b08968"}
         onClickFunction={onButtonClick}
@@ -46,7 +53,7 @@ export default function Content() {
       {dataCity &&
         dataCity.map((element, index) => {
           return <Paper content={element} fSize={23} key={index} />;
-        })}
+        })} */}
 
       {/* {dataCity?.map((element, index) => {
         return <Paper content={element} fSize={23} key={index} />;
