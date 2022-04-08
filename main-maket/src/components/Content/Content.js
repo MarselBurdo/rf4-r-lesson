@@ -4,10 +4,11 @@ import "./style.scss";
 // import { Button as MuButton } from "@mui/material";
 // import { Button as AntButton } from "antd";
 // import Button, { EmoButton } from "../Button";
-// import Counter from "../Counter/Counter";
+import Counter from "../Counter/Counter";
 // import Order from "../Order/Order";
 // import LifecycleClass from "../Lifecycle/LifecycleClass";
-import FetchAPI from "../Fetch/FetchAPI";
+// import FetchAPI from "../Fetch/FetchAPI";
+// import Characters from "../Characters/Characters";
 // import Button from "../Button/Button";
 // import { EmoButton } from "../Button/Button.style";
 
@@ -21,9 +22,10 @@ export default function Content() {
 
   return (
     <div className="content_main">
-      <FetchAPI />
+      {/* <FetchAPI /> */}
+      {/* <Characters /> */}
       {/* <LifecycleClass /> */}
-      {/* <Counter /> */}
+      <Counter />
 
       {/* <Button
         label="Добавить преподавателя"

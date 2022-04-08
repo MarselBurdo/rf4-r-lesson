@@ -9,12 +9,12 @@ export default class FetchView extends Component {
   };
 
   componentDidMount() {
-    console.log("componentDidMount");
+    // console.log("componentDidMount");
     this.setState({ status: "start" });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log("componentDidUpdate");
+    // console.log("componentDidUpdate");
     if (prevProps.hero !== this.props.hero) {
       console.log(this.props.hero);
       fetch(
@@ -52,7 +52,7 @@ export default class FetchView extends Component {
     const { hero } = this.props;
     const { status, characters, filtredArr, search } = this.state;
 
-    console.log({ status, characters, filtredArr, search });
+    // console.log({ status, characters, filtredArr, search });
 
     return (
       <>

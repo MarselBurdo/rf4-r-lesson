@@ -1,52 +1,95 @@
-import React, { Component } from "react";
-import Button, { EmoButton } from "../Button";
+import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import "./style.css";
 
-export default class Counter extends Component {
-  constructor() {
-    super();
-    this.state = {
-      counter: 23,
-      isView: false,
-      tmpArray: [1, 2, "4", 5],
+let tmp = 33;
+
+export default function Counter() {
+  const [counter, setCounter] = useState(0);
+  const [bool, setBool] = useState(false);
+  const numberRef = useRef(0);
+  // useLayoutEffect(() => {
+  //   console.log("useLayoutEffect");
+  // }, []);
+  useEffect(() => {
+    console.log("same componentDidMount");
+    numberRef.current = 23;
+    setBool((state) => !state);
+  }, []);
+
+  useEffect(() => {
+    console.log("same componentDidUpdate", { counter });
+  }, [counter]);
+
+  useEffect(() => {
+    if (bool) {
+      console.log("change BOOL");
+      tmp += 100;
+      console.log("change BOOL in useEffect", { tmp });
+    }
+  }, [bool]);
+
+  useEffect(() => {
+    console.log("tmp useEffect", { tmp });
+  }, [tmp]);
+
+  useEffect(() => {
+    console.log("useEffect no dependecies", { counter, bool, tmp });
+  });
+
+  useEffect(() => {
+    return () => {
+      console.log("same componentWillUnmount");
     };
-  }
+  }, []);
 
-  //   state = {
-  //     counter: 23,
-  //   };
-
-  handleIncriment = (e) => {
-    return this.setState({
-      counter: this.state.counter + 1,
-      isView: !!this.state.counter,
-      tmpArray: [this.state.tmpArray, this.state.counter],
-    });
+  const handler = (type) => {
+    type === "IncrementI"
+      ? setCounter((state) => state + 1)
+      : setCounter((state) => state - 1);
   };
 
-  handleDecrement = (e) => {
-    return this.setState({ counter: this.state.counter - 1 });
+  const handlerRef = (type) => {
+    type === "Increment"
+      ? (numberRef.current = numberRef.current + 1)
+      : (numberRef.current = numberRef.current - 1);
   };
 
-  render() {
-    const { counter } = this.state;
-    console.log(this.state);
-    return (
-      <div className="counter_block">
-        <div className="counter_block-text">{counter}</div>
-        <div>
-          <Button
-            size={6}
-            bgColor={"#fff"}
-            onClickFunction={this.handleIncriment}
-          >
-            Increment
-          </Button>
-          <EmoButton size={5} bgColor={"#fff"} onClick={this.handleDecrement}>
-            Decrement
-          </EmoButton>
-        </div>
-      </div>
-    );
-  }
+  return (
+    <div className="counter_block">
+      <div className="counter_block-text">{counter}</div>
+
+      <button type="button" onClick={() => handler("Increment")}>
+        Increment
+      </button>
+      <button type="button" onClick={() => handler("Decrement")}>
+        Decrement
+      </button>
+      <div className="counter_block-text">{numberRef.current}</div>
+      <button type="button" onClick={() => handlerRef("Increment")}>
+        REF+
+      </button>
+      <button type="button" onClick={() => handlerRef("Decrement")}>
+        REF-
+      </button>
+      <div className="counter_block-text">{tmp}</div>
+      <button
+        type="button"
+        onClick={() => {
+          tmp += 1;
+          console.log({ tmp });
+        }}
+      >
+        TMP+
+      </button>
+      <button
+        type="button"
+        onClick={() => {
+          tmp += 10;
+          console.log({ tmp });
+        }}
+      >
+        TMP+10
+      </button>
+    </div>
+  );
 }
